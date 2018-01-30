@@ -11,7 +11,6 @@
       <div class="copyright text-center">
         &copy; Coded with vueJs and java spring 
         <a href="https://github.com/cristijora" target="_blank">Oumar Niang</a>.
-        Designed by <a href="https://www.creative-tim.com/?ref=pdf-vuejs" target="_blank">Creative Tim</a>.
       </div>
     </div>
   </footer>

@@ -1,7 +1,10 @@
 <template>
   <nav class="navbar navbar-expand-lg">
     <div class="container-fluid">
-      <a class="navbar-brand" href="#">Dashboard</a>
+      <a class="navbar-brand" href="#">Ecole Supérieur Poytechnique</a>
+       <div class="img">
+                <img src="./esp.png" alt="">
+            </div>
       <button type="button"
               class="navbar-toggler navbar-toggler-right"
               :class="{toggled: $sidebar.showSidebar}"
@@ -16,8 +19,8 @@
       <div class="collapse navbar-collapse justify-content-end">
         <ul class="navbar-nav ml-auto">   
           <li class="nav-item">
-            <a href="#"  class="nav-link">
-              Log out
+            <a href="#" v-on:click="signOut" v-if="user" class="nav-link">
+              Se deconnecter
             </a>
           </li>
         </ul>
@@ -26,30 +29,31 @@
   </nav>
 </template>
 <script>
-import Firebase from "firebase";
-export default {
-  data: function() {
-    return {
-      email: "",
-      password: ""
-    };
+import DropDown from 'src/components/UIComponents/Dropdown.vue'
+  import Firebase from "firebase";
+  export default {
+    components: {
+      DropDown
+    },
+    computed: {
+    user() {
+      return this.$store.getters.getUser;
+    }
   },
   methods: {
-    signUp: function() {
+    signOut: function() {
       Firebase.auth()
-        .createUserWithEmailAndPassword(this.email, this.password)
-        .then(
-          user => {
-            this.$router.replace('dashboard');
-          },
-          error => {
-            alert(error.message);
-          }
-        );
+        .signOut()
+        .then(() => {
+          this.$router.replace('/');
+        });
     }
   }
-};
+  }
 </script>
 <style>
-
+  img {
+	width: 50px;
+	height: 50px;
+}
 </style>

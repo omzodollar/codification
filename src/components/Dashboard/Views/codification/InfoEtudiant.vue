@@ -10,13 +10,13 @@
             </template>
             <router-link to="Createcodification" >
             </router-link>     
-                 <table id="example" class="table table-striped table-bordered" width="100%" cellspacing="0">
+              <table id="example" class="table table-striped table-bordered" width="100%" cellspacing="0">
             <thead>
                 <tr>
                     <th>id</th>
                     <th>Nom  </th>
                     <th>Prénom  </th>
-                     <th>Parametre </th>                   
+                    <th>Parametre </th>                   
                 </tr>
         </thead>
         <tfoot>
@@ -24,7 +24,6 @@
                     <td>{{ codification.etudiant.id }}</td>
                     <td>{{ codification.etudiant.nom }}</td>
                     <td>{{ codification.etudiant.prenom }}</td>
-                    <td>{{ codification.prenom }}</td>                 
                 </tr>
                 </tfoot>
             </table>  
@@ -53,9 +52,9 @@
         methods: {
             recuperercodifications()
             {
-              let uri = 'http://localhost:8090/codifications/'+ this.$route.params.id;
+              let uri = 'http://localhost:8090/codifications/'+ this.$route.params.id; 
               this.axios.get(uri).then((response) => {
-            this.codifications= response.data;
+              this.codifications= response.data;
               });
             }
         }

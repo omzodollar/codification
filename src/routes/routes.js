@@ -12,7 +12,9 @@ import CreateCouloire from 'src/components/Dashboard/Views/Couloire/CreateCouloi
 import ListCouloire from 'src/components/Dashboard/Views/Couloire/ListCouloire.vue'
 import Codification from 'src/components/Dashboard/Views/Codification/Codification.vue'
 import InfoEtudiant from 'src/components/Dashboard/Views/Codification/InfoEtudiant.vue'
-
+import CreateEtage from 'src/components/Dashboard/Views/Etage/CreateEtage.vue'
+import ListEtage from 'src/components/Dashboard/Views/Etage/ListEtage.vue'
+import PeriodeCodif from 'src/components/Dashboard/Views/Codification/PeriodeCodif.vue'
 import Typography from 'src/components/Dashboard/Views/Typography.vue'
 import Icons from 'src/components/Dashboard/Views/Icons.vue'
 import Maps from 'src/components/Dashboard/Views/Maps.vue'
@@ -37,17 +39,13 @@ const routes = [
     name:'admin',
     component: DashboardLayout,
 
-    meta: {
-      requiresAuth: true
-    }, 
+   
     children: [
       {
         path: 'overview',
         name: 'Overview',
         component: Overview,
-        meta: {
-          requiresAuth: true
-        }
+        
       },
       {
         path: 'Createbatiment',
@@ -88,6 +86,21 @@ const routes = [
         path: 'InfoEtudiant',
         name: 'InfoEtudiant',
         component: InfoEtudiant
+      },
+      {
+        path: 'ListEtage',
+        name: 'ListEtage',
+        component: ListEtage
+      },
+      {
+        path: 'CreateEtage',
+        name: 'CreateEtage',
+        component: CreateEtage
+      },
+      {
+        path: 'PeriodeCodif',
+        name: 'PeriodeCodif',
+        component: PeriodeCodif
       },
       {
         path: 'typography',

@@ -14,11 +14,12 @@
                  <table id="example" class="table table-striped table-bordered" width="100%" cellspacing="0">
             <thead>
                 <tr>
-                    <th>id</th>
+                   <th><strong> id </strong></th>
                     <th>Numéro </th>
-                    <th>Sexe fixé </th>
-                    <th>Niveau</th>
-                    <th>Nombre de position</th>
+                    <th>position 1 </th>
+                    <th>Nom</th>
+                    <th>Prénom</th>                   
+                    <th>Parametre <span class="glyphicon glyphicon-cog"></span></th>
                 </tr>
         </thead>
         <tfoot>
@@ -29,8 +30,7 @@
                     <td>{{ chambre.anneeDetudeFixer }}</td>
                     <td>{{ chambre.nombreDePosition }}</td>
                      <td><router-link :to="{name: 'Editchambre', params: { id: chambre.id }}" class="btn btn-primary">modifier  </router-link>
-                    <button class="btn btn-danger" v-on:click="deletechambre(chambre.id)">supprimer</button></td>
-                   
+                    <button class="btn btn-danger" v-on:click="deletechambre(chambre.id)">supprimer</button></td>              
                 </tr>
                 </tfoot>
             </table>  

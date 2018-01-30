@@ -1,65 +1,39 @@
-
 <template>
-<div class="limiter">
-	
-		<div class="container-login100 form-container" style="background-image: url('images/bg-01.jpg');">
-			<div class="wrap-login100">
-				<form class="login100-form validate-form" v-on:submit.prevent>
-					<span class="login100-form-logo">
-						<i class="zmdi zmdi-landscape"></i>
-					</span>
 
-					<span class="login100-form-title p-b-34 p-t-27">
-						Log in
-					</span>
 
-					<div class="wrap-input100 validate-input" data-validate = "Enter username">
-						<input class="input100" type="email" placeholder="Email" v-model="email">
-						<span class="focus-input100" ></span>
-					</div>
 
-					<div class="wrap-input100 validate-input" data-validate="Enter password">
-						<input class="input100"  name="pass" placeholder="Password" type="password" v-model="password">
-						<span class="focus-input100" ></span>
-					</div>
+<!-- Modal HTML -->
 
-					<div class="contact100-form-checkbox">
-						<input class="input-checkbox100" id="ckb1" type="checkbox" name="remember-me">
-						<label class="label-checkbox100" for="ckb1">
-							Remember me
-						</label>
-					</div>
-
-					<div class="container-login100-form-btn">
-						<button type="button" class="btn btn-primary btn-lg" v-on:click="signIn">Valider</button>
-
-<!-- 						<button type="submit" class="button is-primary" v-on:click="signIn">Sign-in</button>
- -->					</div>
-
-					<div class="text-center p-t-90">
-						<a class="txt1" href="#">
-							Forgot Password?
-						</a>
+	<div class="modal-dialog modal-login">
+		<div class="modal-content">
+			<div class="modal-header">
+				<div class="avatar">
+					<!-- <img src="/examples/images/avatar.png" alt="Avatar"> -->
+				</div>				
+				<h4 class="modal-title">Member Login</h4>	
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+			</div>
+			<div class="modal-body">
+				<form action="" v-on:submit.prevent>
+					<div class="form-group">
+						<input  class="form-control" type="email" placeholder="Email" v-model="email" required="required">		
+					</div><br><br>
+					<div class="form-group">
+						<input type="password" class="form-control"  placeholder="Password"  v-model="password" required="required">	
+					</div>  <br><br>      
+					<div class="form-group">
+						<button type="submit" class="btn btn-primary btn-lg btn-block login-btn" v-on:click="signIn">Login</button>
 					</div>
 				</form>
 			</div>
+			<div class="modal-footer">
+				<a href="#">Forgot Password?</a>
+			</div>
 		</div>
-	
-</div>
-	
+</div>     
 </template>
 <script>
 import Firebase from "firebase";
-import "./loginStyle/vendor/bootstrap/css/bootstrap.min.css";
-import "./loginStyle/fonts/font-awesome-4.7.0/css/font-awesome.min.css"; 
-import "./loginStyle/fonts/iconic/css/material-design-iconic-font.min.css";
-import "./loginStyle/vendor/animate/animate.css";
-import "./loginStyle/vendor/css-hamburgers/hamburgers.min.css";
-import "./loginStyle/vendor/animsition/css/animsition.min.css";
-import "./loginStyle/vendor/select2/select2.min.css";
-import "./loginStyle/vendor/daterangepicker/daterangepicker.css";
-import "./loginStyle/css/util.css";
-import "./loginStyle/css/main.css";
 export default {
   data: function() {
     return {
@@ -83,41 +57,98 @@ export default {
   }
 };
 </script>
-
-<style lang="scss">
+<style type="text/css">
+    body {
+		font-family: 'Varela Round', sans-serif;
+	}
+	.text-center{
+		margin-top:500px; 
+	}
 	
-body{
-	background-image: url("chambre.png");
-	position: absolute;
-		z-index: 1;
-		height: 100%;
-		width: 100%;
-		display: block;
-		top: 0;
+	.modal-login {		
+		color: #636363;
+		width: 500px;
+		height: 300px;;
+
+	}
+	.modal-login .modal-content {
+		padding: 20px;
+		border-radius: 5px;
+		margin-top: 200px;
+
+	}
+	.modal-login .modal-header {
+		border-bottom: none;   
+        position: relative;
+        justify-content: center;
+	}
+	.modal-login h4 {
+		text-align: center;
+		font-size: 26px;
+		margin: 30px 0 -15px;
+	}
+	.modal-login .form-control:focus {
+		border-color: #8770c5;
+	}
+	.modal-login .form-control, .modal-login .btn {
+		min-height: 40px;
+		border-radius: 3px; 
+	}
+	.modal-login .close {
+        position: absolute;
+		top: -5px;
+		right: -5px;
+	}	
+	.modal-login .modal-footer {
+		background: #ecf0f1;
+		border-color: #dee4e7;
+		text-align: center;
+        justify-content: center;
+		margin: 0 -20px -20px;
+		border-radius: 5px;
+		font-size: 13px;
+	}
+	.modal-login .modal-footer a {
+		color: #999;
+	}		
+	.modal-login .avatar {
+		position: absolute;
+		margin: 0 auto;
 		left: 0;
-		background-size: cover;
-		background-position: 50%;
-		/* -webkit-filter: blur(7px);
-		-moz-filter: blur(7px);
-		-o-filter: blur(7px);
-		-ms-filter: blur(7px);
-		filter: blur(7px); */
-}
-.container-login100  {
-	position: relative;
-	z-index: 8;
-	
-}
-.container-login100::before {
-	background-color: rgba(255, 255, 255, 0);
-}
-.wrap-login100{
-	margin-bottom:100%;
-}
-
+		right: 0;
+		top: -70px;
+		width: 95px;
+		height: 95px;
+		border-radius: 50%;
+		z-index: 9;
+		background: #f2eff8;
+		padding: 15px;
+		box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.1);
+	}
+	.modal-login .avatar img {
+		width: 100%;
+	}
+	.modal-login.modal-dialog {
+		margin-top: 80px;
+	}
+    .modal-login .btn {
+        color: #fff;
+        border-radius: 4px;
+		background: #081CD1;
+		text-decoration: none;
+		transition: all 0.4s;
+        line-height: normal;
+        border: none;
+    }
+	.modal-login .btn:hover, .modal-login .btn:focus {
+		background: #081CD1;
+		outline: none;
+	}
+	.trigger-btn {
+		display: inline-block;
+		margin: 100px auto;
+	}
+		.modal-login .form-control {
+		font-size: 16px;
+	}
 </style>
-
-
-
-
-

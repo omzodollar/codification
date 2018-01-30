@@ -47,11 +47,24 @@
         </div>
       </div>    
       <div class="text-center">
-        <button type="submit" class="btn btn-info btn-fill float-right" v-on:click.prevent="addcouloire">
+        <button type="submit" class="btn btn-info btn-fill float-right" @click="openModal()"  v-on:click.prevent="addcouloire">
 valider        </button>
 
       </div>
-    
+        <div id="wrapper" class="container"> 
+          <modal v-if="showModal"> 
+            <h3 slot="header" class="modal-title">
+          Batiment crée avec succées  </h3>
+          <!--   
+            <div slot="body">
+              <img src="./assets/logo.png" />
+            </div> -->
+
+            <div slot="footer">
+            <button type="button" class="btn btn-outline-info" @click="closeModal()"> Close </button>
+            </div>
+          </modal>
+      </div>  
     </form>
   </card>
 </template>
@@ -60,6 +73,7 @@ valider        </button>
 
 <script>
   import Card from 'src/components/UIComponents/Cards/Card.vue'
+  import Modal from 'src/Components/Dashboard/Views/Modal'
 
   export default {
     components: {
@@ -67,7 +81,8 @@ valider        </button>
     },
    data(){
         return{
-          couloire:{}
+          couloire:{},
+          showModal: false 
         }
     },
     methods: {
@@ -77,8 +92,23 @@ valider        </button>
         console.log(response)
         })
 
-      }
+      },
+       openModal() { 
+      this.showModal = true; 
+    } ,
+    closeModal() {
+      this.showModal = false;
+    },
+    submitAndClose() {
+    
+    }
     } 
 }
 </script>
 
+
+<style>
+#wrapper {
+  margin-top: 60px;
+}
+</style>
