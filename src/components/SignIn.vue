@@ -8,9 +8,9 @@
 		<div class="modal-content">
 			<div class="modal-header">
 				<div class="avatar">
-					<!-- <img src="/examples/images/avatar.png" alt="Avatar"> -->
+					 <img src="./esp.png" alt="Avatar"> 
 				</div>				
-				<h4 class="modal-title">Member Login</h4>	
+				<h4 class="modal-title">connection</h4>	
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
 			</div>
 			<div class="modal-body">
@@ -59,7 +59,7 @@ export default {
 </script>
 <style type="text/css">
     body {
-		font-family: 'Varela Round', sans-serif;
+		font-family: 'Varela Round', sans-serif;	
 	}
 	.text-center{
 		margin-top:500px; 
@@ -68,8 +68,7 @@ export default {
 	.modal-login {		
 		color: #636363;
 		width: 500px;
-		height: 300px;;
-
+		height: 300px;
 	}
 	.modal-login .modal-content {
 		padding: 20px;

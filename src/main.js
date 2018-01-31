@@ -6,9 +6,10 @@ import { store } from './store/store';
 import VueAxios from 'vue-axios';
 import axios from 'axios';
 import Popup from 'vue-popup';
+import VueAlert from '@vuejs-pt/vue-alert'
 require('vue-popup/lib/popup.css');
 Vue.use(VueAxios, axios);
-
+Vue.use(VueAlert);
 // LightBootstrap plugin
 import LightBootstrap from './light-bootstrap-main'
 

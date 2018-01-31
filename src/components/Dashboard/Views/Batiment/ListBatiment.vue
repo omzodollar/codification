@@ -5,6 +5,7 @@
         <div class="col-12">
           <card>
             
+
             <router-link to="Createbatiment" >
               	    <button  type="button" class="btn btn-primary" data-toggle="modal" data-target="#create-batiment"> Ajouter un batiment</button><br><br>
             </router-link>     
@@ -27,17 +28,14 @@
                    <td><button type="submit" class="btn btn-info btn-fill float-left" @click="openModal()">
                     Ajouter chambre  </button>
                       <button type="submit" class="btn btn-info btn-fill float-left" @click="openModal()">
-                    Ajouter couloire  </button>    
-                    <button type="submit" class="btn btn-info btn-fill float-left" @click="openModal()">
-                    Ajouter etages  </button>       
+                    Ajouter couloire  </button>       
                      <!-- <router-link :to="{name: 'Editbatiment', params: { id: batiment.id }}" class="btn btn-primary float-right">modifier  </router-link> -->
-                    <button class="btn btn-danger  float-right" v-on:click="deleteBatiment(batiment.id)">supprimer</button></td>
+                    <button class="btn btn-danger  float-right" @click="greet" v-on:click="deleteBatiment(batiment.id)">supprimer</button></td>
                    
-
-                   <div id="wrapper" class="container"> 
+              <div id="wrapper" class="container"> 
               <modal v-if="showModal"> 
                 <h3 slot="header" class="modal-title">
-                <h4 slot="header" class="card-title">Ajout d'etage</h4>
+                <h4 slot="header" class="card-title">Ajout de couloire(s)</h4>
 
                 <!-- <div class="alert alert-success">
                   <strong><i class="glyphicon glyphicon-thumbs-up"></i> Great!  Batiment crée avec succées</strong>
@@ -48,37 +46,22 @@
                     <div class="col-md-15">
                     <fg-input type="text"
                               label="Nombre couloire"
-                              placeholder=""  v-model="batiment.etages.nombreCouloire" >
+                              placeholder=""  v-model="nombreCouloire" >
                     </fg-input>
-                    </div>
+                    </div>     
                     <div class="col-md-15">
-                   <label for="exampleFormControlSelect1">Sexe</label>
-                    <select class="form-control" id="exampleFormControlSelect1"  v-model="batiment.etages.sexeFixer">
-                      <option>M</option>
-                      <option>F</option>
-                      <option>I</option>
-                    </select>
-                    </div>
-                    <div class="col-md-15">
-                   <label for="exampleFormControlSelect1">Nieau</label>
-                    <select class="form-control" id="exampleFormControlSelect1" v-model="batiment.etages.anneeDetudeFixer" >
-                      <option>1</option>
-                      <option>2</option>
-                      <option>3</option>
-                      <option>4</option>
-                      <option>5</option>
-                      <option>6</option>
-                      <option>7</option>
-                      <option>8</option>
-                    </select>
-                    </div>
+                    <fg-input type="text"
+                              label="Numero etage"
+                              placeholder=""  v-model="numeroEtage" >
+                    </fg-input>
+                    </div>                    
                   </h3>             
             <div slot="footer">
-             <button type="button" class="btn btn-primary"   @click="closeModal()"> fermer </button>
-            <button type="button" class="btn btn-primary"   v-on:click="createEtage(batiment.id)"> Valider </button>
-            </div>
-          </modal>
-      </div>  
+                  <button type="button" class="btn btn-primary"   @click="closeModal()"> fermer </button>
+                  <button type="button" class="btn btn-primary"  @click="greet"  v-on:click="createCouloire(numeroEtage,nombreCouloire)"> Valider </button>
+                  </div>
+                </modal>
+              </div>  
                 </tr>
                 </tfoot>
             </table>  
@@ -92,17 +75,21 @@
   import LTable from 'src/components/UIComponents/Table.vue'
   import Card from 'src/components/UIComponents/Cards/Card.vue'
   import Modal from 'src/Components/Dashboard/Views/Modal'
-
   export default {
     components: {
       Card,
       Modal
 
     },
+    data:{
+    name: 'Vue.js'
+
+    },
    data(){
             return{
                 batiments: [],
-                showModal: false 
+                etages:[],
+                showModal: false,
 
             }
         },
@@ -120,22 +107,32 @@
               this.batiments= response.data;
               });
             },
+             recupererEtages()
+            {
+              let uri = 'http://localhost:8090/Etages ';
+              this.axios.get(uri).then((response) => {
+              this.etages= response.data;
+              });
+            },
              deleteBatiment(id)
             {
               let uri = 'http://localhost:8090/batiments/'+id;
-              this.batiments.splice(id, 1);
               this.axios.delete(uri);
-              recupererBatiments();
             },
-              createEtage(id)
+              createCouloire(id,nombre)
              {
-               let uri = 'http://localhost:8090/batiments/'+id;
-              this.batiments.splice(id, 1);
-              this.axios.post(uri, this.batiments).then((response) => {
+                var param= {
+                 id:id,
+                 nombre:nombre 
+               };
+               let uri = 'http://localhost:8090/etages/nombreCouloire/';
+               this.axios.put(uri, param).then((response) => {
                console.log(response)
               }) 
              },
-             
+             openModalConf() { 
+            this.showModalConf = true; 
+              } ,
              openModal() { 
             this.showModal = true; 
               } ,
@@ -144,7 +141,16 @@
               },
               submitAndClose() {
               
-              }
-        }
-  }
+              },
+              greet: function (event) {
+            // `this` inside methods points to the Vue instance
+            alert('Operation réussie')
+            // `event` is the native DOM event
+            if (event) {
+              alert(event.target.tagName)
+            }
+          }
+      }
+ }
+  
 </script>
