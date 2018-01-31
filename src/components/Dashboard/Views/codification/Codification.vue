@@ -36,10 +36,8 @@
                                 <th>id</th>
                                 <th>Nom  </th>
                                 <th>Prénom  </th>
-                                <th>Parametre </th>
-                                
-                                                  
-                            </tr>
+                                <th>Parametre </th>                                               
+                           </tr>
                     </thead>
                     <tfoot>
                     <tr v-for="codification in codifications"   :key="codification.id">                  
@@ -49,8 +47,7 @@
                     </tr>
                     </tfoot>
                 </table>    
-                        </div>
-                        
+                        </div>                     
             <div slot="footer">
              <button type="button" class="btn btn-primary"   @click="closeModal()"> fermer </button>
             </div>
@@ -96,7 +93,7 @@
         methods: {
              recuperercodifications() 
             {
-              let uri = 'http://localhost:8090/codifications/'; 
+              let uri = 'http://localhost:8090/codifications'; 
               this.axios.get(uri).then((response) => {
               this.codifications= response.data;
               });

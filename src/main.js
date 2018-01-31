@@ -6,7 +6,10 @@ import { store } from './store/store';
 import VueAxios from 'vue-axios';
 import axios from 'axios';
 import Popup from 'vue-popup';
-import VueAlert from '@vuejs-pt/vue-alert'
+import VueAlert from '@vuejs-pt/vue-alert';
+import datePicker from 'vue-bootstrap-datetimepicker';
+import 'bootstrap/dist/css/bootstrap.css';
+import 'eonasdan-bootstrap-datetimepicker/build/css/bootstrap-datetimepicker.css';
 require('vue-popup/lib/popup.css');
 Vue.use(VueAxios, axios);
 Vue.use(VueAlert);
@@ -18,6 +21,7 @@ import routes from './routes/routes'
 // plugin setup
 Vue.use(VueRouter)
 Vue.use(LightBootstrap)
+Vue.use(datePicker);
 
 // configure router
 const config = {

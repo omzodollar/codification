@@ -23,6 +23,7 @@
     "v-tooltip": "^2.0.0-rc.1",
     "vue": "^2.5.2",
     "vue-axios": "^2.0.2",
+    "vue-bootstrap-datetimepicker": "^4.1.2",
     "vue-clickaway": "^2.1.0",
     "vue-date-picker": "^1.0.2",
     "vue-notifyjs": "^0.2.0",

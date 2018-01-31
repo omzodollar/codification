@@ -16,9 +16,9 @@
                 <tr>
                    <th><strong> id </strong></th>
                     <th>Numéro </th>
-                    <th>position 1 </th>
-                    <th>Nom</th>
-                    <th>Prénom</th>                   
+                    <th>Sexe fixé </th>
+                    <th>Niveau</th>
+                    <th>Nombre de position</th>
                     <th>Parametre <span class="glyphicon glyphicon-cog"></span></th>
                 </tr>
         </thead>

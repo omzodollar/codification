@@ -30,39 +30,31 @@
       <div class="row">   
         <div class="col-md-3">
           <fg-input type="text"
-                    label="Numero de chambre"
-                    placeholder="" v-model="chambre.numero">
+                    label="Identifiant batiment"
+                    placeholder="" v-model="batiment">
           </fg-input>
         </div>
         <div class="col-md-4">
           <fg-input type="texte"
-                    label="Nombre de position "
-                    placeholder="" v-model="chambre.nombreDePosition">
+                    label="identifiant etage "
+                    placeholder="" v-model="idEtage">
           </fg-input>
         </div>           
       </div>
       <div class="row">
          <div class="col-md-3">
-          <label for="exampleFormControlSelect1">Sexe</label>
-          <select class="form-control" id="exampleFormControlSelect1" v-model="chambre.sexeFixer">
-            <option>M</option>
-            <option>F</option>
-            <option>I</option>
-          </select>
-        </div>   
-         <div class="col-md-3">
-          <label for="exampleFormControlSelect1">Niveau</label>
-          <select class="form-control" id="exampleFormControlSelect1" v-model="chambre.anneeDetudeFixer">
-            <option>1</option>
-            <option>2</option>
-            <option>3</option>
-            <option>4</option>
-            <option>6</option>
-            <option>7</option>
-            <option>8</option>
-
-          </select>
+          <fg-input type="text"
+                    label="Identifiant couloire"
+                    placeholder="" v-model="idCouloire">
+          </fg-input>
         </div>
+        <div class="col-md-4">
+          <fg-input type="texte"
+                    label="Nombre chambre "
+                    placeholder="" v-model="nombreChambre">
+          </fg-input>
+        </div>           
+        
         <!-- <div class="col-md-3">
           <label for="exampleFormControlSelect1">Couloire</label>
           <select class="form-control" id="exampleFormControlSelect1" >
@@ -75,7 +67,7 @@
         
       </div>    
       <div class="text-center">
-        <button type="submit" class="btn btn-info btn-fill float-right" @click="openModal()" v-on:click.prevent="addchambre">
+        <button type="submit" class="btn btn-info btn-fill float-right" @click="openModal()" v-on:click.prevent="createChambre(idCouloire,nombreChambre)">
          valider  
         </button>
       </div>   
@@ -103,13 +95,17 @@
         }
     },
     methods: {
-      addchambre(){
-        let uri = 'http://localhost:8090/chambres';
-        this.axios.post(uri, this.chambre).then((response) => {
-        console.log(response)
-        })
-
-      },
+       createChambre(id,nombre)
+             {
+                var param= {
+                 id:id,
+                 nombre:nombre 
+               };
+               let uri = 'http://localhost:8090/couloires/nombreChambre/';
+               this.axios.put(uri, param).then((response) => {
+               console.log(response)
+              }) 
+             },
      openModal() { 
       this.showModal = true; 
     } ,

@@ -7,11 +7,13 @@
             
 
             <router-link to="Createbatiment" >
-              	    <button  type="button" class="btn btn-primary" data-toggle="modal" data-target="#create-batiment"> Ajouter un batiment</button><br><br>
-            </router-link>     
+                    <button  type="button" class="btn btn-primary" data-toggle="modal" data-target="#create-batiment"> Ajouter un batiment</button><br><br>
+            </router-link> 
+              	    <button  type="button" class="btn btn-primary float-right" @click="openModal()" data-toggle="modal" data-target="#create-item"> Ajouter une couloire</button><br><br>
                  <table id="example" class="table table-striped table-bordered" width="100%" cellspacing="0">
             <thead>
                 <tr>
+                    <th>Identifiant</th>
                     <th>Nom</th>
                     <th>Nombre d'etage</th>
                     <th>Genre</th>
@@ -20,22 +22,20 @@
                 </tr>
         </thead>
         <tfoot>
-                <tr v-for="batiment in batiments" :key="batiment.id">                  
+                <tr v-for="batiment in batiments" :key="batiment.id">    
+                    <td>{{ batiment.id }}</td>              
                     <td>{{ batiment.nom }}</td>
                     <td>{{ batiment.nombreEtage }}</td>
                     <td>{{ batiment.sexeFixer }}</td>
-                    <td>{{ batiment.anneeDetudeFixer }}</td>
-                   <td><button type="submit" class="btn btn-info btn-fill float-left" @click="openModal()">
-                    Ajouter chambre  </button>
-                      <button type="submit" class="btn btn-info btn-fill float-left" @click="openModal()">
-                    Ajouter couloire  </button>       
-                     <!-- <router-link :to="{name: 'Editbatiment', params: { id: batiment.id }}" class="btn btn-primary float-right">modifier  </router-link> -->
-                    <button class="btn btn-danger  float-right" @click="greet" v-on:click="deleteBatiment(batiment.id)">supprimer</button></td>
+                    <td>{{ batiment.anneeDetudeFixer }}  année</td>
+                   <td>     
+                    <button class="btn btn-primary float-right">modifier  </button>
+                    <button class="btn btn-danger  float-right" @click="greet"   v-on:click="deleteBatiment(batiment.id)">supprimer</button></td>
                    
               <div id="wrapper" class="container"> 
               <modal v-if="showModal"> 
                 <h3 slot="header" class="modal-title">
-                <h4 slot="header" class="card-title">Ajout de couloire(s)</h4>
+                <h4 slot="header" class="card-title">Ajout de couloire(s) </h4>
 
                 <!-- <div class="alert alert-success">
                   <strong><i class="glyphicon glyphicon-thumbs-up"></i> Great!  Batiment crée avec succées</strong>
@@ -45,17 +45,24 @@
                     </div>
                     <div class="col-md-15">
                     <fg-input type="text"
-                              label="Nombre couloire"
-                              placeholder=""  v-model="nombreCouloire" >
+                              label="Identifiant du batiment "
+                              placeholder=""  v-model="bat" >
                     </fg-input>
-                    </div>     
+                    </div> 
                     <div class="col-md-15">
                     <fg-input type="text"
                               label="Numero etage"
                               placeholder=""  v-model="numeroEtage" >
                     </fg-input>
-                    </div>                    
-                  </h3>             
+                    </div>  
+                    <div class="col-md-15">
+                    <fg-input type="text"
+                              label="Nombre couloire"
+                              placeholder=""  v-model="nombreCouloire" >
+                    </fg-input>
+                    </div>     
+                                      
+                  </h3>      
             <div slot="footer">
                   <button type="button" class="btn btn-primary"   @click="closeModal()"> fermer </button>
                   <button type="button" class="btn btn-primary"  @click="greet"  v-on:click="createCouloire(numeroEtage,nombreCouloire)"> Valider </button>
